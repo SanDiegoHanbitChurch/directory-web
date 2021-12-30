@@ -1,5 +1,5 @@
-import { List } from '@material-ui/core';
 import React from 'react';
+import { List } from '@material-ui/core';
 import Member from './member';
 
 const renderMember = (member) => {
