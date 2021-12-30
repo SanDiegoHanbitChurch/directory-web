@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MembersContainer from './members';
+import HanbitLogo from './assets/hanbitLogo.svg';
+import { Box } from '@material-ui/core';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hanbit Directory
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Box display='flex' justifyContent='center'>
+        <img src={HanbitLogo} alt="HanbitLogo" />
+      </Box>
+      <MembersContainer />
     </div>
   );
 }
