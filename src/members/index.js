@@ -1,9 +1,9 @@
 import React from 'react';
-import Lists from './lists';
+import Members from './Members';
 
 const MembersContainer = () => {
 
-    const sample = [
+    const members = [
             {
                 "id": "0a25f500-8206-43e1-aafc-9a1ea40ea3f9",
                 "name": "Jordane Kautzer",
@@ -27,10 +27,8 @@ const MembersContainer = () => {
             },
         ];
 
-    console.log(sample[0].name)
-
     return (
-        <Lists sample={sample}/>
+        <Members members={members}/>
     )
 }
 
