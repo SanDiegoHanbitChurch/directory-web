@@ -1,5 +1,6 @@
 import React from 'react';
-import Avatar from './avatar';
+import { Box } from '@material-ui/core';
+import MemberAvatar from './memberAvatar';
 import Name from './name';
 import Phone from './phone';
 import Email from './email';
@@ -14,12 +15,12 @@ const Member = ({member}) => {
      } = member
 
     return (
-        <>
+        <Box display="flex" flexDirection="row" m={3}>
+            <MemberAvatar avatar={avatar}/>
             <Name name={name}/>
-            <Avatar avatar={avatar}/>
             <Phone phone={phone}/>
             <Email email={email}/>
-        </>
+        </Box>
     )
 }
 

@@ -1,8 +1,11 @@
 import React from 'react';
+import { Box, Typography } from '@material-ui/core';
 
 const Name = ({name}) => {
     return (
-        <p>{name}</p>
+        <Box p={2}>
+            <Typography>{name}</Typography>
+        </Box>
     )
 }
 
