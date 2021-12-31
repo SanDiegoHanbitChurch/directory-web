@@ -15,6 +15,7 @@ const login = async () => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
+        console.log('token', token)
         // The signed-in user info.
         const user = result.user;
 
@@ -32,7 +33,13 @@ const login = async () => {
     }
 }
 
-const logout = () => signOut;
+const logout = async () => {
+    try {
+        await signOut(auth);
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 export {
     login,

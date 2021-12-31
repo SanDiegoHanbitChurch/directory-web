@@ -8,9 +8,9 @@ import Unauthenticated from './unauthenticated';
 const App = () => {
   const [ cookies, setCookie, removeCookie ] = useCookies(['auth']);
 
-  const logout = () => {
+  const logout = async () => {
     removeCookie('auth');
-    authActions.logout();
+    await authActions.logout();
   };
 
   const login = async () => {
@@ -22,13 +22,15 @@ const App = () => {
   }
 
   const { auth = {} } = cookies;
-  const { authenticated} = auth;
+  const { authenticated, user} = auth;
+
+  console.log(user)
 
   if (authenticated) {
     return (
       <CookiesProvider>
         <div>
-          <Authenticated />
+          <Authenticated logout={logout}/>
         </div>
       </CookiesProvider>
     );
