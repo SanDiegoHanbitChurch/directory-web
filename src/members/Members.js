@@ -12,7 +12,7 @@ const Members = ({members}) => {
 
     return (
         <List>
-            { members.map((member) => renderMember(member))}
+            { members.map(renderMember)}
         </List>
     )
 }

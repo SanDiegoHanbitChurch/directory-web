@@ -1,18 +1,46 @@
 import React from 'react';
 import './App.css';
-import MembersContainer from './members';
-import HanbitLogo from './assets/hanbitLogo.svg';
-import { Box } from '@material-ui/core';
+import { CookiesProvider, useCookies } from 'react-cookie';
+import * as authActions from './auth/auth';
+import Authenticated from './authenticated';
+import Unauthenticated from './unauthenticated';
 
-function App() {
+const App = () => {
+  const [ cookies, setCookie, removeCookie ] = useCookies(['auth']);
+
+  const logout = () => {
+    removeCookie('auth');
+    authActions.logout();
+  };
+
+  const login = async () => {
+      const googleUser = await authActions.login();
+      setCookie('auth', {
+        authenticated: true,
+        user: googleUser
+      })
+  }
+
+  const { auth = {} } = cookies;
+  const { authenticated} = auth;
+
+  if (authenticated) {
+    return (
+      <CookiesProvider>
+        <div>
+          <Authenticated />
+        </div>
+      </CookiesProvider>
+    );
+  }
+
   return (
-    <div>
-      <Box display='flex' justifyContent='center'>
-        <img src={HanbitLogo} alt="HanbitLogo" />
-      </Box>
-      <MembersContainer />
-    </div>
-  );
+    <CookiesProvider>
+      <div>
+        <Unauthenticated login={login} />
+      </div>
+    </CookiesProvider>
+  )
 }
 
 export default App;
