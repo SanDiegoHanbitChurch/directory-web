@@ -15,7 +15,7 @@ const Member = ({member}) => {
      } = member
 
     return (
-        <Box display="flex" flexDirection="row" m={3}>
+        <Box display="flex" flexDirection="row" justifyContent="center" m={3}>
             <MemberAvatar avatar={avatar}/>
             <Name name={name}/>
             <Phone phone={phone}/>
