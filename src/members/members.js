@@ -4,7 +4,7 @@ import Member from './member';
 
 const renderMember = (member) => {
     return (
-        <Member member={member} />
+        <Member key={member.id} member={member} />
     )
 }
 
