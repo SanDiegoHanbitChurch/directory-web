@@ -13,13 +13,11 @@ const login = async () => {
     try {
         const result = await signInWithPopup(auth, provider);
         // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        console.log('token', token)
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
         // The signed-in user info.
-        const user = result.user;
+        const { displayName, email, accessToken } = result.user;
 
-        return user;
+        return { displayName, email, accessToken };
     } catch (error) {
         // // Handle Errors here.
         // const errorCode = error.code;

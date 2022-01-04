@@ -18,19 +18,17 @@ const App = () => {
       setCookie('auth', {
         authenticated: true,
         user: googleUser
-      })
+      }) 
   }
 
   const { auth = {} } = cookies;
   const { authenticated, user} = auth;
 
-  console.log(user)
-
   if (authenticated) {
     return (
       <CookiesProvider>
         <div>
-          <Authenticated logout={logout}/>
+          <Authenticated user={user} logout={logout}/>
         </div>
       </CookiesProvider>
     );

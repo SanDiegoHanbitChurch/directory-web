@@ -3,7 +3,7 @@ import MembersContainer from './members';
 import HanbitLogo from './assets/hanbitLogo.svg';
 import { Box, Button } from '@material-ui/core';
 
-const Authenticated = ({logout}) => {
+const Authenticated = ({logout, user}) => {
     return (
         <div>
             <Box display='flex' justifyContent='center'>
@@ -14,7 +14,7 @@ const Authenticated = ({logout}) => {
                     Logout
                 </Button>
             </Box>
-            <MembersContainer />
+            <MembersContainer user={user}/>
         </div>
     )
 }
