@@ -4,7 +4,6 @@ import HanbitLogo from './assets/hanbitLogo.svg';
 import { Box, Button } from '@material-ui/core';
 
 const Authenticated = ({logout, user}) => {
-    console.log('Authenticated user', user)
     return (
         <div>
             <Box display='flex' justifyContent='center'>

@@ -5,8 +5,6 @@ import axios from 'axios';
 const MembersContainer = ({user}) => {
     const [members, setMembers] = useState([]);
 
-    console.log('members index user', user)
-
     useEffect(() => {
         const url='https://us-central1-hanbit-directory-dev.cloudfunctions.net/v1/members';
         const options = {
@@ -14,7 +12,6 @@ const MembersContainer = ({user}) => {
                 Authorization: `Bearer ${user.accessToken}`
             }
         }
-        console.log('options', options)
         axios.get(url, options)
             .then((response) => {
                 // handle success

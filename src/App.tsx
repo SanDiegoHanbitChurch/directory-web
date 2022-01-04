@@ -24,8 +24,6 @@ const App = () => {
   const { auth = {} } = cookies;
   const { authenticated, user} = auth;
 
-  console.log('Appuser', user)
-
   if (authenticated) {
     return (
       <CookiesProvider>
