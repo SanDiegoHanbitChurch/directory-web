@@ -24,7 +24,7 @@ const MembersContainer = ({user}) => {
             .finally(() => {
                 // always executed
             });
-    }, []);
+    }, [user.accessToken]);
 
     return (
         <Members members={members}/>
