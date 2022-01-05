@@ -1,29 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Members from './members';
-import axios from 'axios';
+import { getMembers } from '../api/getMembers';
 
 const MembersContainer = ({user}) => {
     const [members, setMembers] = useState([]);
 
-    useEffect(() => {
-        const url='https://us-central1-hanbit-directory-dev.cloudfunctions.net/v1/members';
-        const options = {
-            headers: {
-                Authorization: `Bearer ${user.accessToken}`
-            }
-        }
-        axios.get(url, options)
-            .then((response) => {
-                // handle success
-                setMembers(response.data);
-            })
-            .catch((error) => {
-                // handle error
-                console.log(error);
-            })
-            .finally(() => {
-                // always executed
-            });
+    useEffect(async () => {
+        const foo =  await getMembers(user);
+        setMembers(foo)
     }, []);
 
     return (

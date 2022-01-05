@@ -7,7 +7,7 @@ import { Box } from '@material-ui/core';
 const Unauthenticated = ({login}) => {
     return (
         <Box>
-            <Box display='flex' justifyContent='center' m={5}>
+            <Box display='flex' justifyContent='center' m={10}>
                 <img src={HanbitLogo} alt="HanbitLogo" />
             </Box>
             <Box display='flex' justifyContent='center' m={10}>
