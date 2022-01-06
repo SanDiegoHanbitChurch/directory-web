@@ -9,12 +9,9 @@ const renderMember = (member) => {
 }
 
 const Members = ({members}) => {
-
-    console.log('members', members)
-
     return (
         <List>
-            { members.map((member) => renderMember(member))}
+            { members.map(renderMember)}
         </List>
     )
 }

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const getMembers = async (user) => {
-    const url = 'https://us-central1-hanbit-directory-dev.cloudfunctions.net/v1/members';
+    const url = process.env.REACT_APP_DIRECTORY_SERVICE_URL;
     const options = {
         headers: {
             Authorization: `Bearer ${user.accessToken}`
