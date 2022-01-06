@@ -1,3 +1,9 @@
 img {
   width: 300px;
 }
+
+body {
+  background-image: url("https://i.ytimg.com/vi/nasgyeou9eg/maxresdefault.jpg");
+  background-size: 100%;
+  background-attachment: fixed;
+ }

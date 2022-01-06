@@ -9,7 +9,6 @@ const renderMember = (member) => {
 }
 
 const Members = ({members}) => {
-
     return (
         <List>
             { members.map(renderMember)}
