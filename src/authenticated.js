@@ -1,7 +1,7 @@
 import React from 'react';
 import MembersContainer from './members';
 import HanbitLogo from './assets/hanbitLogo.svg';
-import { Box, Button } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import HeaderContainer from './header';
 
 const Authenticated = ({logout, user}) => {
