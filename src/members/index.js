@@ -8,7 +8,7 @@ const MembersContainer = ({user}) => {
     useEffect(async () => {
         const foo =  await getMembers(user);
         setMembers(foo)
-    }, []);
+    }, [user]);
   
     return (
         <Members members={members}/>
