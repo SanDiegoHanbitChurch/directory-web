@@ -1,7 +1,11 @@
 import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 
-const Name = ({name}) => {
+type Props = {
+    name: string
+}
+
+const Name = ({name}: Props) => {
     return (
         <Box p={2}>
             <Typography>{name}</Typography>

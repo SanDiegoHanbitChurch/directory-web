@@ -2,7 +2,11 @@ import React, {useState} from 'react';
 import { Box, IconButton, Dialog, DialogTitle, DialogActions, Button } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-const LogoutButton = ({logout}) => {
+type Props = {
+    logout: () => void;
+}
+
+const LogoutButton = ({logout}: Props) => {
     const [openState, setOpenState] = useState(false);
 
     const handleOnOpen = () => {
@@ -15,7 +19,7 @@ const LogoutButton = ({logout}) => {
 
     return (
         <Box m={1}>
-            <IconButton variant="contained"  color='primary' onClick={handleOnOpen}>
+            <IconButton onClick={handleOnOpen}>
                 <ExitToAppIcon fontSize='large'/>
             </IconButton>
             <Dialog open={openState} onClose={handleOnClose}>

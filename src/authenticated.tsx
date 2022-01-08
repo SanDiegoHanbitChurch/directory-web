@@ -4,7 +4,16 @@ import HanbitLogo from './assets/hanbitLogo.svg';
 import { Box } from '@material-ui/core';
 import HeaderContainer from './header';
 
-const Authenticated = ({logout, user}) => {
+type Props = {
+    logout: () => void;
+    user: {
+        displayName: string,
+        email: string,
+        accessToken: string
+    }
+}
+
+const Authenticated = ({logout, user}: Props) => {
     return (
         <div>
             <HeaderContainer logout={logout} user={user} />

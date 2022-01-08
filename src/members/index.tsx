@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Members from './members';
 import { getMembers } from '../api/getMembers';
+import { User } from '../types';
 
-const MembersContainer = ({user}) => {
+type Props = {
+    user: User
+}
+
+const MembersContainer = ({user}: Props) => {
     const [membersState, setMembers] = useState([]);
   
     useEffect(() => {
-       const fetchData = async (user) => {
+       const fetchData = async (user: User) => {
             const members =  await getMembers(user);
             setMembers(members)
         };
