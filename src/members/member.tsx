@@ -5,7 +5,17 @@ import Name from './name';
 import Phone from './phone';
 import Email from './email';
 
-const Member = ({member}) => {
+type Props = {
+    member : {
+        name: string,
+        avatar: string,
+        phone: string,
+        email: string,
+    }
+
+}
+
+const Member = ({member}: Props) => {
 
     const {
         name,

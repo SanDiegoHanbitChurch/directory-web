@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { User } from '../types';
 
-const getMembers = async (user) => {
-    const url = process.env.REACT_APP_DIRECTORY_SERVICE_URL;
+const getMembers = async (user: User) => {
+    const url = process.env.REACT_APP_DIRECTORY_SERVICE_URL as string;
     const options = {
         headers: {
             Authorization: `Bearer ${user.accessToken}`
