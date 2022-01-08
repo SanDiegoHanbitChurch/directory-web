@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from '@material-ui/core';
-import MemberType from './member';
+import Member from './member';
 
 type MemberType = {
     id: string,
@@ -16,7 +16,7 @@ type Props = {
 
 const renderMember = (member: MemberType) => {
     return (
-        <MemberType key={member.id} member={member} />
+        <Member key={member.id} member={member} />
     )
 }
 
