@@ -4,6 +4,7 @@ import MemberAvatar from './memberAvatar';
 import Name from './name';
 import Phone from './phone';
 import Email from './email';
+import MemberCard from './memberCard';
 
 type Props = {
     member : {
@@ -26,10 +27,7 @@ const Member = ({member}: Props) => {
 
     return (
         <Box display="flex" flexDirection="row" justifyContent="center" m={3}>
-            <MemberAvatar avatar={avatar}/>
-            <Name name={name}/>
-            <Phone phone={phone}/>
-            <Email email={email}/>
+            <MemberCard name={name} avatar={avatar} phone={phone} email={email} />
         </Box>
     )
 }
