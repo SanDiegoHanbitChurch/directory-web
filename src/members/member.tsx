@@ -1,9 +1,5 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import MemberAvatar from './memberAvatar';
-import Name from './name';
-import Phone from './phone';
-import Email from './email';
 import MemberCard from './memberCard';
 
 type Props = {
