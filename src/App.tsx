@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { CookiesProvider, useCookies } from 'react-cookie';
-import * as authActions from './auth/auth';
+import * as authActions from './auth/';
 import Authenticated from './authenticated';
 import Unauthenticated from './unauthenticated';
 

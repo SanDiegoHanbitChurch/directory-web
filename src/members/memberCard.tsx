@@ -2,6 +2,7 @@ import React from 'react';
 import Name from './name';
 import Phone from './phone';
 import Email from './email';
+import Address from './address';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,7 +13,13 @@ type Props = {
     name: string,
     avatar: string,
     phone: string,
-    email: string
+    email: string,
+    address: {
+        street: string,
+        city: string,
+        state: string,
+        zip: string,
+    }
 }
 
 const useStyles = makeStyles({
@@ -22,7 +29,7 @@ const useStyles = makeStyles({
   });
   
 
-const MemberCard = ({name, phone, email, avatar}: Props) => {
+const MemberCard = ({name, phone, email, avatar, address}: Props) => {
     const classes = useStyles();
     return (
         <Card>
@@ -37,6 +44,9 @@ const MemberCard = ({name, phone, email, avatar}: Props) => {
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     <Phone phone={phone} />
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="a">
+                    <Address address={address} />
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     <Email email={email} />
