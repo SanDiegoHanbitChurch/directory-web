@@ -22,7 +22,7 @@ type Props = {
 
 const renderMember = (member: MemberType) => {
     return (
-        <Grid item xs={3}>
+        <Grid item xs={6} sm={4} md={3} lg={2}>
             <Member key={member.id} member={member} />
         </Grid>
     )

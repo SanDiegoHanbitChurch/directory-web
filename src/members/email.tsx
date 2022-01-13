@@ -7,9 +7,8 @@ type Props = {
 
 const Email = ({email}: Props) => {
     return (
-        <Box display='flex' justifyContent='center' p={2}>
+        <Box display='flex' justifyContent='center' p={1}>
             <Typography>{email}</Typography>
-            <Typography>Hello World</Typography>
         </Box>
     )
 }

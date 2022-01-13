@@ -1,20 +1,27 @@
 import React from 'react';
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box, Avatar } from '@material-ui/core';
 
 type Props = {
     user: {
         displayName: string,
         email: string,
+        photoURL: string,
         accessToken: string
     }
 }
 
 const UserAvatar = ({user}: Props) => {
+    console.log('user', user)
     return (
-        <Box m={3}>
-            <Typography>
-                {user.displayName}
-            </Typography>
+        <Box m={1} display='flex' flexDirection='row' >
+            <Box m={1}>
+                <Avatar src={user.photoURL} alt='UserAvatar'/>
+            </Box>
+            <Box m={2}>
+                <Typography>
+                    {user.displayName}
+                </Typography>
+            </Box>
         </Box>
     )
 }

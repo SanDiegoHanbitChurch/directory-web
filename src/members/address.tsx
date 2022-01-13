@@ -14,7 +14,7 @@ const Address = ({address}: Props) => {
     return (
         <Box p={2}>
             <Typography>{address.street}</Typography>
-            <Typography>{address.city} {address.state} {address.zip}</Typography>
+            <Typography>{address.city}, {address.state} {address.zip}</Typography>
         </Box>
     )
 }

@@ -10,7 +10,6 @@ const getMembers = async (user: User) => {
     };
     try {
         const { data } = await axios.get(url, options);
-        console.log('members', data)
         return data;
     } catch (error) {
         console.log('error', error)

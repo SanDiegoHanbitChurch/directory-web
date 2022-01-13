@@ -6,12 +6,13 @@ const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
 
 async function getUser(googleUser: GoogleUser) {
-    const { displayName, email } = googleUser;
+    const { displayName, email, photoURL } = googleUser;
     const accessToken = await googleUser.getIdToken();
 
     return {
         displayName,
         email,
+        photoURL,
         accessToken
     };
 }

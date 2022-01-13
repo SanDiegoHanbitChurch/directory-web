@@ -8,6 +8,7 @@ type Props = {
     user: {
         displayName: string,
         email: string,
+        photoURL: string,
         accessToken: string
     };
 }
