@@ -1,9 +1,6 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import MemberAvatar from './memberAvatar';
-import Name from './name';
-import Phone from './phone';
-import Email from './email';
+import MemberCard from './memberCard';
 
 type Props = {
     member : {
@@ -11,25 +8,27 @@ type Props = {
         avatar: string,
         phone: string,
         email: string,
+        address: {
+            street: string,
+            city: string,
+            state: string,
+            zip: string,
+        }
     }
-
 }
 
 const Member = ({member}: Props) => {
-
     const {
         name,
         avatar,
         phone,
-        email
+        email,
+        address
      } = member
 
     return (
         <Box display="flex" flexDirection="row" justifyContent="center" m={3}>
-            <MemberAvatar avatar={avatar}/>
-            <Name name={name}/>
-            <Phone phone={phone}/>
-            <Email email={email}/>
+            <MemberCard name={name} avatar={avatar} phone={phone} email={email} address={address}/>
         </Box>
     )
 }

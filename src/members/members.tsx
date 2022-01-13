@@ -1,5 +1,5 @@
 import React from 'react';
-import { List } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Member from './member';
 
 type MemberType = {
@@ -8,6 +8,12 @@ type MemberType = {
     avatar: string,
     phone: string,
     email: string,
+    address: {
+        street: string,
+        city: string,
+        state: string,
+        zip: string,
+    }
 };
 
 type Props = {
@@ -16,15 +22,17 @@ type Props = {
 
 const renderMember = (member: MemberType) => {
     return (
-        <Member key={member.id} member={member} />
+        <Grid item xs={6} sm={4} md={3} lg={2}>
+            <Member key={member.id} member={member} />
+        </Grid>
     )
 }
 
 const Members = ({members}: Props) => {
     return (
-        <List>
+        <Grid container spacing={3}>
             { members.map(renderMember)}
-        </List>
+        </Grid>
     )
 }
 
