@@ -1,9 +1,9 @@
 import React from 'react';
-import SearchFab from './searchFab';
+import SearchDialog from './searchDialog';
 
 const SearchContainer = () => {
     return (
-        <SearchFab />
+        <SearchDialog />
     )
 }
 

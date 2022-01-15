@@ -2,6 +2,10 @@ import React from 'react';
 import { Fab , makeStyles} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
+type Props = {
+    handleOnClickOpen: () => void,
+}
+
 const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
@@ -15,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const SearchFab = () => {
+const SearchFab = ({handleOnClickOpen}: Props) => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -24,6 +28,7 @@ const SearchFab = () => {
                 aria-label="add" 
                 className='SearchButton' 
                 size='large'
+                onClick={handleOnClickOpen}
             >
                 <SearchIcon />
             </Fab>
