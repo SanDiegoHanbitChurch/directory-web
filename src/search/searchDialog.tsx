@@ -30,15 +30,13 @@ const SearchDialog = ({searchResults, handleOnSearch}: Props) => {
         <Dialog fullWidth={true} open={openState} aria-labelledby="form-dialog-title">
             <DialogContent>
                 <SearchBar handleOnSearch={handleOnSearch} />
-            </DialogContent>
-            <DialogContent>
                 <SearchResult searchResults={searchResults} />
-            </DialogContent>
-            <DialogActions>
+                <DialogActions>
                 <Button onClick={handleOnClickClose} color="primary">
                     Cancel
                 </Button>
             </DialogActions>
+            </DialogContent>
         </Dialog>
         </>
     )

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles, IconButton, Box, InputBase, Paper } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import { User } from '../types';
 
 type Props = {
   handleOnSearch: (searchTerm: string) => void
