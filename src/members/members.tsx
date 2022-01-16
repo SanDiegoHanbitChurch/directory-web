@@ -18,7 +18,7 @@ const renderMember = (member: MemberType) => {
 const Members = ({members}: Props) => {
     return (
         <Grid container spacing={3}>
-            { members.map((member) => renderMember(member))}
+            { members.map(renderMember)}
         </Grid>
     )
 }

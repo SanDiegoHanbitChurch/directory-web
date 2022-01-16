@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User } from '../types';
+import { User, MemberType } from '../types';
 import SearchDialog from './searchDialog';
 import { searchMembers } from '../api/index';
 
@@ -8,7 +8,7 @@ type Props = {
 }
 
 const SearchContainer = ({user}: Props) => {
-    const [searchResultState, setSearchResultState] = useState([])
+    const [searchResultState, setSearchResultState] = useState<MemberType[]>([])
 
     const handleOnSearch = async (searchTerm: string) => {
         const result = await searchMembers(user,searchTerm)
