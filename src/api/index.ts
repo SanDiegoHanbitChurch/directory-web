@@ -1,8 +1,17 @@
 import axios from 'axios'
 import { User } from '../types';
 
+const url = process.env.REACT_APP_DIRECTORY_SERVICE_URL as string;
+
+const searchMembers = async (user: User, searchTerm: string) => {
+    return callEndpoint(user, `${url}?query=${searchTerm}`);    
+}
+
 const getMembers = async (user: User) => {
-    const url = process.env.REACT_APP_DIRECTORY_SERVICE_URL as string;
+    return callEndpoint(user, url);    
+}
+
+const callEndpoint = async (user: User, url: string) => {
     const options = {
         headers: {
             Authorization: `Bearer ${user.accessToken}`
@@ -14,8 +23,10 @@ const getMembers = async (user: User) => {
     } catch (error) {
         console.log('error', error)
     }
+
 }
 
 export {
-    getMembers
+    getMembers,
+    searchMembers
 }

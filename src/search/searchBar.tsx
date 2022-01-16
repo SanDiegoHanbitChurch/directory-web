@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import {makeStyles, IconButton, Box, InputBase, Paper } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import { User } from '../types';
+
+type Props = {
+  handleOnSearch: (searchTerm: string) => void
+}
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,25 +24,30 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const SearchBar = () => {
+const SearchBar = ({handleOnSearch}: Props) => {
     const classes = useStyles();
 
-    const [ fieldState, setFieldState ] = useState('')
+    const [ searchTermState, setSearchTermState ] = useState('')
     
-    const handleOnFieldState = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setFieldState(event.target.value)
+    const handleOnFieldState = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTermState(event.target.value)
     }
 
     return (
         <Box>
             <Paper className={classes.root} variant='outlined' elevation={10}>
                 <InputBase
-                    value={fieldState}
+                    value={searchTermState}
                     onChange={handleOnFieldState}
                     className={classes.input}
                     placeholder='Search users...'
                 />
-                <IconButton color='primary' className={classes.iconButton} disabled={!fieldState}>
+                <IconButton 
+                    color='primary' 
+                    className={classes.iconButton} 
+                    disabled={!searchTermState || searchTermState.length < 3} 
+                    onClick={() => handleOnSearch(searchTermState)}
+                >
                     <SearchIcon />
                 </IconButton>
             </Paper>

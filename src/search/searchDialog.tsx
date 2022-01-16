@@ -5,8 +5,15 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import SearchFab from './searchFab';
 import SearchBar from './searchBar';
+import SearchResult from './searchResult';
+import { MemberType } from '../types';
 
-const SearchDialog = () => {
+type Props = {
+    searchResults: MemberType[],
+    handleOnSearch: (searchTerm: string) => void
+}
+
+const SearchDialog = ({searchResults, handleOnSearch}: Props) => {
     const [ openState, setOpenState ] = useState(false)
 
     const handleOnClickOpen = () => {
@@ -22,7 +29,10 @@ const SearchDialog = () => {
         <SearchFab handleOnClickOpen={handleOnClickOpen} />
         <Dialog fullWidth={true} open={openState} aria-labelledby="form-dialog-title">
             <DialogContent>
-                <SearchBar />
+                <SearchBar handleOnSearch={handleOnSearch} />
+            </DialogContent>
+            <DialogContent>
+                <SearchResult searchResults={searchResults} />
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleOnClickClose} color="primary">

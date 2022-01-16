@@ -1,20 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import Member from './member';
-
-type MemberType = {
-    id: string,
-    name: string,
-    avatar: string,
-    phone: string,
-    email: string,
-    address: {
-        street: string,
-        city: string,
-        state: string,
-        zip: string,
-    }
-};
+import { MemberType } from '../types'
 
 type Props = {
     members: MemberType[]

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Members from './members';
-import { getMembers } from '../api/getMembers';
+import { getMembers } from '../api/index';
 import { User } from '../types';
 
 type Props = {
