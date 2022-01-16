@@ -11,7 +11,6 @@ type Props = {
 }
 
 const UserAvatar = ({user}: Props) => {
-    console.log('user', user)
     return (
         <Box m={1} display='flex' flexDirection='row' >
             <Box m={1}>
