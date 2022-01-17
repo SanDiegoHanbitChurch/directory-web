@@ -21,9 +21,6 @@ const callEndpoint = async (user: User, url: string): Promise<MemberType[]> => {
     },
   };
 
-  console.log("url", url);
-  console.trace("api::callEndpoint");
-
   try {
     const { data } = await axios.get(url, options);
     return data;

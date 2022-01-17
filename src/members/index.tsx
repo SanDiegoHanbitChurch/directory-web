@@ -9,12 +9,10 @@ type Props = {
 
 const MembersContainer = ({ user }: Props) => {
   const [membersState, setMembers] = useState<MemberType[]>([]);
-  console.log("membersState", membersState);
 
   useEffect(() => {
     const fetchData = async (user: User) => {
       const members = await getMembers(user);
-      console.log("members", members);
       setMembers(members);
     };
     fetchData(user);
