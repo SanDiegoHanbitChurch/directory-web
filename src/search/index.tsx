@@ -1,9 +1,22 @@
-import React from 'react';
-import SearchFab from './searchFab';
+import React, { useState } from 'react';
+import { User, MemberType } from '../types';
+import SearchDialog from './searchDialog';
+import { searchMembers } from '../api/index';
 
-const SearchContainer = () => {
+type Props = {
+    user: User
+}
+
+const SearchContainer = ({user}: Props) => {
+    const [searchResultState, setSearchResultState] = useState<MemberType[]>([])
+
+    const handleOnSearch = async (searchTerm: string) => {
+        const result = await searchMembers(user,searchTerm)
+        setSearchResultState(result);
+    }
+
     return (
-        <SearchFab />
+        <SearchDialog searchResults={searchResultState} handleOnSearch={handleOnSearch}/>
     )
 }
 

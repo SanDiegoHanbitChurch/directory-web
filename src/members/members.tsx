@@ -1,20 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import Member from './member';
-
-type MemberType = {
-    id: string,
-    name: string,
-    avatar: string,
-    phone: string,
-    email: string,
-    address: {
-        street: string,
-        city: string,
-        state: string,
-        zip: string,
-    }
-};
+import { MemberType } from '../types'
 
 type Props = {
     members: MemberType[]
@@ -22,7 +9,7 @@ type Props = {
 
 const renderMember = (member: MemberType) => {
     return (
-        <Grid item xs={6} sm={4} md={3} lg={2}>
+        <Grid item xs={6} sm={4} md={3}>
             <Member key={member.id} member={member} />
         </Grid>
     )

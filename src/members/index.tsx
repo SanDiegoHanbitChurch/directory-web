@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Members from './members';
-import { getMembers } from '../api/getMembers';
-import { User } from '../types';
+import { getMembers } from '../api/index';
+import { MemberType, User } from '../types';
 
 type Props = {
     user: User
 }
 
 const MembersContainer = ({user}: Props) => {
-    const [membersState, setMembers] = useState([]);
+    const [membersState, setMembers] = useState<MemberType[]>([]);
   
     useEffect(() => {
        const fetchData = async (user: User) => {
