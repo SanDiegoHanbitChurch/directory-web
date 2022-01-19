@@ -8,7 +8,7 @@ type Props = {
 const Name = ({name}: Props) => {
     return (
         <Box display='flex' justifyContent='center' p={1}>
-            <Typography>{name}</Typography>
+            <Typography gutterBottom component="h2">{name}</Typography>
         </Box>
     )
 }

@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {makeStyles, IconButton, Box, InputBase, Paper } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import {makeStyles, Box, InputBase, Paper } from '@material-ui/core';
+import SearchButton from './searchButton';
+import ClearButton from './clearButton';
 
 type Props = {
-  handleOnSearch: (searchTerm: string) => void
-  handleOnClickOpen: () => void,
+  handleOnSearch: (searchTerm: string) => void,
+  handleOnMembers: () => void,
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -19,12 +20,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(1),
       flex: 1,
     },
-    iconButton: {
-      padding: 10,
-    },
   }));
 
-const SearchBar = ({handleOnSearch, handleOnClickOpen}: Props) => {
+const SearchBar = ({handleOnSearch, handleOnMembers}: Props) => {
     const classes = useStyles();
 
     const [ searchTermState, setSearchTermState ] = useState('')
@@ -33,9 +31,9 @@ const SearchBar = ({handleOnSearch, handleOnClickOpen}: Props) => {
         setSearchTermState(event.target.value);
     }
 
-    const handleOnSearchOpen = () => {
-      handleOnSearch(searchTermState)
-      handleOnClickOpen()
+    const handleOnClear = () => {
+      setSearchTermState('')
+      handleOnMembers()
     }
 
     return (
@@ -47,14 +45,8 @@ const SearchBar = ({handleOnSearch, handleOnClickOpen}: Props) => {
                     className={classes.input}
                     placeholder='Search users...'
                 />
-                <IconButton 
-                    color='primary' 
-                    className={classes.iconButton} 
-                    disabled={!searchTermState || searchTermState.length < 3} 
-                    onClick={handleOnSearchOpen}
-                >
-                    <SearchIcon />
-                </IconButton>
+                <SearchButton searchTermState={searchTermState} handleOnSearch={handleOnSearch} />
+                <ClearButton handleOnClear={handleOnClear} searchTermState={searchTermState} />
             </Paper>
         </Box>
     )

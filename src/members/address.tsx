@@ -23,9 +23,9 @@ const Address = ({address}: Props) => {
     } = address;
 
     return (
-        <Box p={2}>
-            <Typography>{street}</Typography>
-            <Typography>{city}, {state} {zip}</Typography>
+        <Box p={2} display='flex' flexDirection='column'>
+            <Typography variant="body1" color="textSecondary" component="span">{street}</Typography>
+            <Typography variant="body1" color="textSecondary" component="span">{city}, {state} {zip}</Typography>
         </Box>
     )
 }

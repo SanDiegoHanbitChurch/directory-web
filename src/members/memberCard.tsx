@@ -39,18 +39,10 @@ const MemberCard = ({name, phone, email, avatar, address}: Props) => {
                 title="Member Avatar"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    <Name name={name} />
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    <Phone phone={phone} />
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="a">
-                    <Address address={address} />
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    <Email email={email} />
-                </Typography>
+                <Name name={name} />
+                <Phone phone={phone} />
+                <Address address={address} />
+                <Email email={email} />
             </CardContent>
         </Card>
     )

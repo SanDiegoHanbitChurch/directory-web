@@ -9,8 +9,8 @@ type Props = {
 
 const renderMember = (member: MemberType) => {
     return (
-        <Grid item xs={6} sm={4} md={3}>
-            <Member key={member.id} member={member} />
+        <Grid key={member.id} item xs={6} sm={4} md={3}>
+            <Member member={member} />
         </Grid>
     )
 }

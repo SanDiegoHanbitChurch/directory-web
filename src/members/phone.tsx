@@ -8,7 +8,7 @@ type Props = {
 const Phone = ({phone}: Props) => {
     return (
         <Box display='flex' justifyContent='center' p={1}>
-            <Typography>{phone}</Typography>
+            <Typography variant="body1" color="textSecondary" component="span">{phone}</Typography>
         </Box>
     )
 }
