@@ -13,7 +13,7 @@ type Props = {
     handleOnSearch: (searchTerm: string) => void
 }
 
-const SearchDialog = ({searchResults, handleOnSearch}: Props) => {
+const Search = ({searchResults, handleOnSearch}: Props) => {
     const [ openState, setOpenState ] = useState(false)
 
     const handleOnClickOpen = () => {
@@ -26,10 +26,9 @@ const SearchDialog = ({searchResults, handleOnSearch}: Props) => {
 
     return (
         <>
-        <SearchFab handleOnClickOpen={handleOnClickOpen} />
+        <SearchBar handleOnClickOpen={handleOnClickOpen} handleOnSearch={handleOnSearch} />
         <Dialog fullWidth={true} open={openState} aria-labelledby="form-dialog-title">
-            <DialogContent>
-                <SearchBar handleOnSearch={handleOnSearch} />
+            <DialogContent> 
                 <SearchResults searchResults={searchResults} />
                 <DialogActions>
                 <Button onClick={handleOnClickClose} color="primary">
@@ -42,4 +41,4 @@ const SearchDialog = ({searchResults, handleOnSearch}: Props) => {
     )
 }
 
-export default SearchDialog;
+export default Search;

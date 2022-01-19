@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { User, MemberType } from '../types';
-import SearchDialog from './searchDialog';
+import Search from './search';
 import { searchMembers } from '../api/index';
 
 type Props = {
@@ -16,7 +16,7 @@ const SearchContainer = ({user}: Props) => {
     }
 
     return (
-        <SearchDialog searchResults={searchResultState} handleOnSearch={handleOnSearch}/>
+        <Search searchResults={searchResultState} handleOnSearch={handleOnSearch}/>
     )
 }
 

@@ -22,8 +22,8 @@ const Authenticated = ({logout, user}: Props) => {
             <Box display='flex' justifyContent='center'>
                 <img src={HanbitLogo} alt="HanbitLogo" />
             </Box>
-            <MembersContainer user={user}/>
             <SearchContainer user={user}/>
+            <MembersContainer user={user}/>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 type Props = {
   handleOnSearch: (searchTerm: string) => void
+  handleOnClickOpen: () => void,
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -23,17 +24,22 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const SearchBar = ({handleOnSearch}: Props) => {
+const SearchBar = ({handleOnSearch, handleOnClickOpen}: Props) => {
     const classes = useStyles();
 
     const [ searchTermState, setSearchTermState ] = useState('')
     
     const handleOnFieldState = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTermState(event.target.value)
+        setSearchTermState(event.target.value);
+    }
+
+    const handleOnSearchOpen = () => {
+      handleOnSearch(searchTermState)
+      handleOnClickOpen()
     }
 
     return (
-        <Box>
+        <Box display='flex' justifyContent='center' m={1}>
             <Paper className={classes.root} variant='outlined' elevation={10}>
                 <InputBase
                     value={searchTermState}
@@ -45,13 +51,12 @@ const SearchBar = ({handleOnSearch}: Props) => {
                     color='primary' 
                     className={classes.iconButton} 
                     disabled={!searchTermState || searchTermState.length < 3} 
-                    onClick={() => handleOnSearch(searchTermState)}
+                    onClick={handleOnSearchOpen}
                 >
                     <SearchIcon />
                 </IconButton>
             </Paper>
         </Box>
-
     )
 }
 
