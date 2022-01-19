@@ -4,6 +4,7 @@ import { CookiesProvider, useCookies } from 'react-cookie';
 import * as authActions from './auth/';
 import Authenticated from './authenticated';
 import Unauthenticated from './unauthenticated';
+import ScrollToTop from './scrollToTop';
 
 const App = () => {
   const [ cookies, setCookie, removeCookie ] = useCookies(['auth']);
@@ -29,6 +30,7 @@ const App = () => {
       <CookiesProvider>
         <div>
           <Authenticated user={user} logout={logout}/>
+          <ScrollToTop />
         </div>
       </CookiesProvider>
     );
