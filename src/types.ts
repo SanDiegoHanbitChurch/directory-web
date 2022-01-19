@@ -16,5 +16,5 @@ export type MemberType = {
         city: string,
         state: string,
         zip: string,
-    }
+    } 
 };

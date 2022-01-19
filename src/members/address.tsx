@@ -2,19 +2,30 @@ import React from 'react';
 import { Typography, Box } from '@material-ui/core';
 
 type Props = {
-    address: {
+    address?: {
         street: string,
-        city: string,
+        city: string, 
         state: string,
         zip: string,
     }
 }
 
 const Address = ({address}: Props) => {
+    if (address == undefined) {
+        return null
+    }
+
+    const {
+        street,
+        city,
+        state,
+        zip
+    } = address;
+
     return (
         <Box p={2}>
-            <Typography>{address.street}</Typography>
-            <Typography>{address.city}, {address.state} {address.zip}</Typography>
+            <Typography>{street}</Typography>
+            <Typography>{city}, {state} {zip}</Typography>
         </Box>
     )
 }

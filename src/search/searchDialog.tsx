@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import SearchFab from './searchFab';
 import SearchBar from './searchBar';
-import SearchResult from './searchResult';
+import SearchResults from './searchResults';
 import { MemberType } from '../types';
 
 type Props = {
@@ -30,7 +30,7 @@ const SearchDialog = ({searchResults, handleOnSearch}: Props) => {
         <Dialog fullWidth={true} open={openState} aria-labelledby="form-dialog-title">
             <DialogContent>
                 <SearchBar handleOnSearch={handleOnSearch} />
-                <SearchResult searchResults={searchResults} />
+                <SearchResults searchResults={searchResults} />
                 <DialogActions>
                 <Button onClick={handleOnClickClose} color="primary">
                     Cancel
