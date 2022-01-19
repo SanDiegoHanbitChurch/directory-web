@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Address = ({address}: Props) => {
-    if (address == undefined) {
+    if (address === undefined) {
         return null
     }
 
