@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Members from "./members";
-import { getMembers } from "../api/index";
-import { searchMembers } from '../api/index';
+import { getMembers, searchMembers } from "../api/index";
 import { MemberType, User } from "../types";
 import SearchBar from "./search/searchBar";
 
@@ -13,32 +12,30 @@ const MembersContainer = ({ user }: Props) => {
   const [membersState, setMembers] = useState<MemberType[]>([]);
 
   const handleOnSearch = async (searchTerm: string) => {
-    const result = await searchMembers(user,searchTerm);
+    const result = await searchMembers(user, searchTerm);
     setMembers(result);
   };
 
-  const handleOnMembers = () => {
-    const fetchData = async (user: User) => {
-      const members = await getMembers(user);
-      setMembers(members);
-    };
-    fetchData(user);
-  }
+  const fetchData = async () => {
+    const members = await getMembers(user);
+    setMembers(members);
+  };
 
+  const handleOnClear = () => {
+    fetchData();
+  };
+
+  // gets exectued after compoonent is mounted
   useEffect(() => {
-    const fetchData = async (user: User) => {
-      const members = await getMembers(user);
-      setMembers(members);
-    };
-    fetchData(user);
+    fetchData();
   }, [user]);
 
   return (
     <>
-      <SearchBar handleOnSearch={handleOnSearch} handleOnMembers={handleOnMembers}/>
-      <Members members={membersState}/>
+      <SearchBar onSearch={handleOnSearch} onClear={handleOnClear} />
+      <Members members={membersState} />
     </>
-    );
+  );
 };
 
 export default MembersContainer;

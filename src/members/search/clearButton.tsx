@@ -1,24 +1,18 @@
-import React from 'react';
-import ClearIcon from '@material-ui/icons/Clear';
-import { IconButton, Box,} from '@material-ui/core';
+import React from "react";
+import ClearIcon from "@material-ui/icons/Clear";
+import { IconButton, Box } from "@material-ui/core";
 
 type Props = {
-    handleOnClear: () => void,
-    searchTermState: string,
-}
+  onClick: () => void;
+  disabled: boolean;
+};
 
-const ClearButton = ({handleOnClear, searchTermState}: Props) => {
-    return (
-        <Box>
-            <IconButton 
-                color='primary' 
-                disabled={!searchTermState || searchTermState.length < 3} 
-                onClick={handleOnClear}
-            >
-                <ClearIcon />
-            </IconButton>
-        </Box>
-    )
-}
+const ClearButton = ({ onClick, disabled }: Props) => (
+  <Box>
+    <IconButton color="primary" disabled={disabled} onClick={onClick}>
+      <ClearIcon />
+    </IconButton>
+  </Box>
+);
 
 export default ClearButton;

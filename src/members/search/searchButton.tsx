@@ -1,24 +1,18 @@
-import React from 'react';
-import SearchIcon from '@material-ui/icons/Search';
-import { IconButton, Box } from '@material-ui/core';
+import React from "react";
+import SearchIcon from "@material-ui/icons/Search";
+import { IconButton, Box } from "@material-ui/core";
 
 type Props = {
-    searchTermState: string,
-    handleOnSearch: (searchTerm: string) => void,
-}
+  disabled: boolean;
+  onClick: () => void;
+};
 
-const SearchButton = ({searchTermState, handleOnSearch}: Props) => {
-    return (
-        <Box>
-            <IconButton 
-                color='primary' 
-                disabled={!searchTermState || searchTermState.length < 3} 
-                onClick={() => handleOnSearch(searchTermState)}
-            >
-                <SearchIcon />
-            </IconButton>
-        </Box>
-    )
-}
+const SearchButton = ({ disabled, onClick }: Props) => (
+  <Box>
+    <IconButton color="primary" disabled={disabled} onClick={onClick}>
+      <SearchIcon />
+    </IconButton>
+  </Box>
+);
 
 export default SearchButton;

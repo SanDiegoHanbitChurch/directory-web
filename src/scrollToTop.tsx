@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {Button} from '@material-ui/core';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import { Button } from "@material-ui/core";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,7 +19,7 @@ export default function ScrollToTop() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -29,12 +29,13 @@ export default function ScrollToTop() {
 
   return (
     <div className="scroll-to-top">
-      {isVisible && 
+      {isVisible && (
         <div onClick={scrollToTop}>
-            <Button color='primary' variant='contained'>
-                <ArrowUpwardIcon />
-            </Button>
-        </div>}
+          <Button color="primary" variant="contained">
+            <ArrowUpwardIcon />
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

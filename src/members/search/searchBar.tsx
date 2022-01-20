@@ -1,55 +1,63 @@
-import React, {useState} from 'react';
-import {makeStyles, Box, InputBase, Paper } from '@material-ui/core';
-import SearchButton from './searchButton';
-import ClearButton from './clearButton';
+import React, { useState } from "react";
+import { makeStyles, Box, InputBase, Paper } from "@material-ui/core";
+import SearchButton from "./searchButton";
+import ClearButton from "./clearButton";
 
 type Props = {
-  handleOnSearch: (searchTerm: string) => void,
-  handleOnMembers: () => void,
-}
+  // eslint-disable-next-line no-unused-vars
+  onSearch: (searchTerm: string) => Promise<void>;
+  onClear: () => void;
+};
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      padding: '2px 4px',
-      display: 'flex',
-      alignItems: 'center',
-      width: 540,
-      opacity: 0.7,
-    },
-    input: {
-      marginLeft: theme.spacing(1),
-      flex: 1,
-    },
-  }));
+  root: {
+    padding: "2px 4px",
+    display: "flex",
+    alignItems: "center",
+    width: 540,
+    opacity: 0.7,
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+  },
+}));
 
-const SearchBar = ({handleOnSearch, handleOnMembers}: Props) => {
-    const classes = useStyles();
+const SearchBar = ({ onSearch, onClear }: Props) => {
+  const classes = useStyles();
 
-    const [ searchTermState, setSearchTermState ] = useState('')
-    
-    const handleOnFieldState = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTermState(event.target.value);
-    }
+  const [searchTermState, setSearchTermState] = useState("");
 
-    const handleOnClear = () => {
-      setSearchTermState('')
-      handleOnMembers()
-    }
+  const handleOnFieldState = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTermState(event.target.value);
+  };
 
-    return (
-        <Box display='flex' justifyContent='center' m={1}>
-            <Paper className={classes.root} variant='outlined' elevation={10}>
-                <InputBase
-                    value={searchTermState}
-                    onChange={handleOnFieldState}
-                    className={classes.input}
-                    placeholder='Search users...'
-                />
-                <SearchButton searchTermState={searchTermState} handleOnSearch={handleOnSearch} />
-                <ClearButton handleOnClear={handleOnClear} searchTermState={searchTermState} />
-            </Paper>
-        </Box>
-    )
-}
+  const handleOnClearClick = () => {
+    setSearchTermState("");
+    onClear();
+  };
+
+  const handleOnSearchClick = () => {
+    onSearch(searchTermState);
+  };
+
+  return (
+    <Box display="flex" justifyContent="center" m={1}>
+      <Paper className={classes.root} variant="outlined" elevation={10}>
+        <InputBase
+          value={searchTermState}
+          onChange={handleOnFieldState}
+          className={classes.input}
+          placeholder="Search users..."
+        />
+        <SearchButton
+          disabled={!searchTermState || searchTermState.length < 3}
+          onClick={handleOnSearchClick}
+        />
+        <ClearButton onClick={handleOnClearClick} disabled={!searchTermState} />
+      </Paper>
+    </Box>
+  );
+};
 
 export default SearchBar;
