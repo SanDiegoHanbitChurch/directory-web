@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Members from "./members";
-import { getMembers } from "../api/index";
+import { getMembers, searchMembers } from "../api/index";
 import { MemberType, User } from "../types";
+import SearchBar from "./search/searchBar";
 
 type Props = {
   user: User;
@@ -10,15 +11,31 @@ type Props = {
 const MembersContainer = ({ user }: Props) => {
   const [membersState, setMembers] = useState<MemberType[]>([]);
 
+  const handleOnSearch = async (searchTerm: string) => {
+    const result = await searchMembers(user, searchTerm);
+    setMembers(result);
+  };
+
+  const fetchData = async () => {
+    const members = await getMembers(user);
+    setMembers(members);
+  };
+
+  const handleOnClear = () => {
+    fetchData();
+  };
+
+  // gets exectued after compoonent is mounted
   useEffect(() => {
-    const fetchData = async (user: User) => {
-      const members = await getMembers(user);
-      setMembers(members);
-    };
-    fetchData(user);
+    fetchData();
   }, [user]);
 
-  return <Members members={membersState} />;
+  return (
+    <>
+      <SearchBar onSearch={handleOnSearch} onClear={handleOnClear} />
+      <Members members={membersState} />
+    </>
+  );
 };
 
 export default MembersContainer;

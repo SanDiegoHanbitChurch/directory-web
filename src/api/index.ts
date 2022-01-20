@@ -1,18 +1,7 @@
 import axios from "axios";
 import { MemberType, User } from "../types";
 
-const url = process.env.REACT_APP_DIRECTORY_SERVICE_URL as string;
-
-const searchMembers = async (
-  user: User,
-  searchTerm: string
-): Promise<MemberType[]> => {
-  return await callEndpoint(user, `${url}?query=${searchTerm}`);
-};
-
-const getMembers = async (user: User): Promise<MemberType[]> => {
-  return await callEndpoint(user, url);
-};
+const BASEURL = process.env.REACT_APP_DIRECTORY_SERVICE_URL as string;
 
 const callEndpoint = async (user: User, url: string): Promise<MemberType[]> => {
   const options = {
@@ -25,9 +14,16 @@ const callEndpoint = async (user: User, url: string): Promise<MemberType[]> => {
     const { data } = await axios.get(url, options);
     return data;
   } catch (error) {
-    console.log("error", error);
+    // eslint-disable-next-line no-console
+    console.error("error", error);
     return [];
   }
 };
+
+const searchMembers = (user: User, searchTerm: string): Promise<MemberType[]> =>
+  callEndpoint(user, `${BASEURL}?query=${searchTerm}`);
+
+const getMembers = async (user: User): Promise<MemberType[]> =>
+  callEndpoint(user, BASEURL);
 
 export { getMembers, searchMembers };
