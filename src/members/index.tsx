@@ -14,6 +14,12 @@ const MembersContainer = ({ user }: Props) => {
   const handleOnSearch = async (searchTerm: string) => {
     const result = await searchMembers(user, searchTerm);
     setMembers(result);
+    if (result.length === 0 || result === undefined) {
+      setTimeout(() => {
+        // eslint-disable-next-line no-alert
+        alert("No users found. Please search again.");
+      }, 1000);
+    }
   };
 
   const fetchData = async () => {
