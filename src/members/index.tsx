@@ -60,10 +60,12 @@ const MembersContainer = ({ user }: Props) => {
     const { pageYOffset } = window;
     const percent = (pageYOffset / documentHeight) * 100;
 
-    if (percent > 75 && percent < 80) {
+    if (percent > 75 && percent < 76) {
       setOffsetState(myRef.current + 25);
     }
   };
+
+  console.log("offsetState", offsetState);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
