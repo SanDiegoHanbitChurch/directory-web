@@ -19,6 +19,7 @@ type Props = {
     state: string;
     zip: string;
   };
+  onOpenMap: () => void;
 };
 
 const useStyles = makeStyles({
@@ -27,7 +28,14 @@ const useStyles = makeStyles({
   },
 });
 
-const MemberCard = ({ name, phone, email, avatar, address }: Props) => {
+const MemberCard = ({
+  name,
+  phone,
+  email,
+  avatar,
+  address,
+  onOpenMap,
+}: Props) => {
   const classes = useStyles();
   return (
     <Card>
@@ -39,7 +47,7 @@ const MemberCard = ({ name, phone, email, avatar, address }: Props) => {
       <CardContent>
         <Name name={name} />
         <Phone phone={phone} />
-        <Address address={address} />
+        <Address address={address} onClick={onOpenMap} />
         <Email email={email} />
       </CardContent>
     </Card>
