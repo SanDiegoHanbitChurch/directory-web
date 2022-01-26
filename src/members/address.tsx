@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Box, Link } from "@material-ui/core";
 
 type Props = {
   address?: {
@@ -8,9 +8,10 @@ type Props = {
     state: string;
     zip: string;
   };
+  onClick: () => void;
 };
 
-const Address = ({ address }: Props) => {
+const Address = ({ address, onClick }: Props) => {
   if (address === undefined) {
     return null;
   }
@@ -18,14 +19,16 @@ const Address = ({ address }: Props) => {
   const { street, city, state, zip } = address;
 
   return (
-    <Box p={2} display="flex" flexDirection="column">
-      <Typography variant="body1" color="textSecondary" component="span">
-        {street}
-      </Typography>
-      <Typography variant="body1" color="textSecondary" component="span">
-        {city}, {state} {zip}
-      </Typography>
-    </Box>
+    <Link onClick={onClick} component="button">
+      <Box p={2} display="flex" flexDirection="column">
+        <Typography variant="body1" color="textSecondary" component="span">
+          {street}
+        </Typography>
+        <Typography variant="body1" color="textSecondary" component="span">
+          {city}, {state} {zip}
+        </Typography>
+      </Box>
+    </Link>
   );
 };
 

@@ -20,6 +20,22 @@ type Props = {
 const Member = ({ member }: Props) => {
   const { name, avatar, phone, email, address } = member;
 
+  const handleOnOpenMap = () => {
+    const destination = encodeURIComponent(
+      `${address.street} ${address.zip}, ${address.city}`
+    );
+    const link = `http://maps.google.com/?daddr=${destination}`;
+    window.open(link);
+  };
+
+  const handleOnSendEmail = () => {
+    window.open(`mailto:${email}`);
+  };
+
+  const handleOnCallNumber = () => {
+    window.open(`tel:${phone}`);
+  };
+
   return (
     <Box display="flex" flexDirection="row" justifyContent="center" m={3}>
       <MemberCard
@@ -28,6 +44,9 @@ const Member = ({ member }: Props) => {
         phone={phone}
         email={email}
         address={address}
+        onOpenMap={handleOnOpenMap}
+        onSendEmail={handleOnSendEmail}
+        onCallNumber={handleOnCallNumber}
       />
     </Box>
   );
