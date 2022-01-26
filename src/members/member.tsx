@@ -28,6 +28,14 @@ const Member = ({ member }: Props) => {
     window.open(link);
   };
 
+  const handleOnSendEmail = () => {
+    window.open(`mailto:${email}`);
+  };
+
+  const handleOnCallNumber = () => {
+    window.open(`tel:${phone}`);
+  };
+
   return (
     <Box display="flex" flexDirection="row" justifyContent="center" m={3}>
       <MemberCard
@@ -37,6 +45,8 @@ const Member = ({ member }: Props) => {
         email={email}
         address={address}
         onOpenMap={handleOnOpenMap}
+        onSendEmail={handleOnSendEmail}
+        onCallNumber={handleOnCallNumber}
       />
     </Box>
   );

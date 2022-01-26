@@ -19,16 +19,16 @@ const Address = ({ address, onClick }: Props) => {
   const { street, city, state, zip } = address;
 
   return (
-    <Box p={2} display="flex" flexDirection="column">
-      <Link onClick={onClick} component="button">
+    <Link onClick={onClick} component="button">
+      <Box p={2} display="flex" flexDirection="column">
         <Typography variant="body1" color="textSecondary" component="span">
           {street}
         </Typography>
         <Typography variant="body1" color="textSecondary" component="span">
           {city}, {state} {zip}
         </Typography>
-      </Link>
-    </Box>
+      </Box>
+    </Link>
   );
 };
 

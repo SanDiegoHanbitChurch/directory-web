@@ -20,11 +20,13 @@ type Props = {
     zip: string;
   };
   onOpenMap: () => void;
+  onSendEmail: () => void;
+  onCallNumber: () => void;
 };
 
 const useStyles = makeStyles({
   media: {
-    height: 150,
+    height: 250,
   },
 });
 
@@ -35,6 +37,8 @@ const MemberCard = ({
   avatar,
   address,
   onOpenMap,
+  onSendEmail,
+  onCallNumber,
 }: Props) => {
   const classes = useStyles();
   return (
@@ -46,9 +50,9 @@ const MemberCard = ({
       />
       <CardContent>
         <Name name={name} />
-        <Phone phone={phone} />
+        <Phone phone={phone} onClick={onCallNumber} />
         <Address address={address} onClick={onOpenMap} />
-        <Email email={email} />
+        <Email email={email} onClick={onSendEmail} />
       </CardContent>
     </Card>
   );
