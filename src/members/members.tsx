@@ -14,9 +14,11 @@ const renderMember = (member: MemberType) => (
 );
 
 const Members = ({ members }: Props) => (
-  <Grid container spacing={3}>
-    {members.map(renderMember)}
-  </Grid>
+  <>
+    <Grid container spacing={3}>
+      {members.map(renderMember)}
+    </Grid>
+  </>
 );
 
 export default Members;
