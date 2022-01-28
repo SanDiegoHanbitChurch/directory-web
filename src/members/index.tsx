@@ -1,39 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { Box, CircularProgress } from "@material-ui/core";
 import Members from "./members";
 import { getMembers, searchMembers } from "../api/index";
 import { MemberType, User } from "../types";
 import SearchBar from "./search/searchBar";
+import PagesContainer from "./pages";
 
 type Props = {
   user: User;
 };
 
-// returns height of browser document
-const getDocumentHeight = (): number => {
-  const { body } = document;
-  const html = document.documentElement;
-
-  const height = Math.max(
-    body.scrollHeight,
-    body.offsetHeight,
-    html.clientHeight,
-    html.scrollHeight,
-    html.offsetHeight
-  );
-
-  return height;
-};
-
 const MembersContainer = ({ user }: Props) => {
   const [membersState, setMembers] = useState<MemberType[]>([]);
-  const [offsetState, _setOffsetState] = useState(0);
-
-  const myRef = useRef(offsetState);
-
-  const setOffsetState = (offset: number) => {
-    myRef.current = offset;
-    _setOffsetState(offset);
-  };
+  const [offsetState, setOffsetState] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleOnSearch = async (searchTerm: string) => {
     const result = await searchMembers(user, searchTerm);
@@ -48,38 +28,61 @@ const MembersContainer = ({ user }: Props) => {
 
   const fetchData = async () => {
     const members = await getMembers(user, offsetState);
-    setMembers(membersState.concat(members));
+    setMembers(members);
+  };
+
+  const handleOnNextMembers = async () => {
+    setOffsetState(offsetState + 25);
+    setIsLoading(true);
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+    await getMembers(user, offsetState);
+    setIsLoading(false);
+  };
+
+  const handleOnBackMembers = async () => {
+    setOffsetState(offsetState - 25);
+    setIsLoading(true);
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+    await getMembers(user, offsetState);
+    setIsLoading(false);
   };
 
   const handleOnClear = () => {
     fetchData();
   };
 
-  const handleScroll = () => {
-    const documentHeight = getDocumentHeight();
-    const { pageYOffset } = window;
-    const percent = (pageYOffset / documentHeight) * 100;
-    if (percent > 75 && percent < 76) {
-      setOffsetState(myRef.current + 25);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   // gets exectued after compoonent is mounted
   useEffect(() => {
     fetchData();
   }, [user, offsetState]);
 
+  if (isLoading) {
+    return (
+      <Box m={10} display="flex" justifyContent="center" alignItems="center">
+        <CircularProgress color="secondary" />
+      </Box>
+    );
+  }
   return (
     <>
       <SearchBar onSearch={handleOnSearch} onClear={handleOnClear} />
+      <PagesContainer
+        onBackMembers={handleOnBackMembers}
+        offset={offsetState}
+        onNextMembers={handleOnNextMembers}
+      />
       <Members members={membersState} />
+      <PagesContainer
+        onBackMembers={handleOnBackMembers}
+        offset={offsetState}
+        onNextMembers={handleOnNextMembers}
+      />
     </>
   );
 };
