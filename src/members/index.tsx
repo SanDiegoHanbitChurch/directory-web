@@ -13,7 +13,7 @@ type Props = {
 const MembersContainer = ({ user }: Props) => {
   const [membersState, setMembers] = useState<MemberType[]>([]);
   const [offsetState, setOffsetState] = useState(0);
-  const [dataLoadingState, setDataLoadingState] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleOnSearch = async (searchTerm: string) => {
     const result = await searchMembers(user, searchTerm);
@@ -33,26 +33,24 @@ const MembersContainer = ({ user }: Props) => {
 
   const handleOnNextMembers = async () => {
     setOffsetState(offsetState + 25);
-    setDataLoadingState(true);
+    setIsLoading(true);
     window.scrollTo({
       top: 0,
       behavior: "auto",
     });
     await getMembers(user, offsetState);
-    setDataLoadingState(false);
+    setIsLoading(false);
   };
 
-  const handleOnBackMembers = () => {
+  const handleOnBackMembers = async () => {
     setOffsetState(offsetState - 25);
-    setDataLoadingState(true);
+    setIsLoading(true);
     window.scrollTo({
       top: 0,
       behavior: "auto",
     });
-    setTimeout(() => {
-      // eslint-disable-next-line no-alert
-      setDataLoadingState(false);
-    }, 1000);
+    await getMembers(user, offsetState);
+    setIsLoading(false);
   };
 
   const handleOnClear = () => {
@@ -64,7 +62,7 @@ const MembersContainer = ({ user }: Props) => {
     fetchData();
   }, [user, offsetState]);
 
-  if (dataLoadingState === true) {
+  if (isLoading) {
     return (
       <Box m={10} display="flex" justifyContent="center" alignItems="center">
         <CircularProgress color="secondary" />

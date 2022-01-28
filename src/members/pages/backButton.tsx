@@ -8,9 +8,8 @@ type Props = {
 
 const BackButton = ({ onClick }: Props) => (
   <Box m={5}>
-    <Button variant="contained" color="primary" onClick={onClick}>
-      Previous Page
-      <NavigateBeforeIcon />
+    <Button color="secondary" variant="outlined" onClick={onClick}>
+      <NavigateBeforeIcon fontSize="large" />
     </Button>
   </Box>
 );

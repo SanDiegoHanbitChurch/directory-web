@@ -8,9 +8,8 @@ type Props = {
 
 const NextButton = ({ onClick }: Props) => (
   <Box m={5}>
-    <Button variant="contained" color="primary" onClick={onClick}>
-      Next Page
-      <NavigateNextIcon />
+    <Button color="secondary" variant="outlined" onClick={onClick}>
+      <NavigateNextIcon fontSize="large" />
     </Button>
   </Box>
 );
