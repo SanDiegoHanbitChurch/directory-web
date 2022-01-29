@@ -10,7 +10,7 @@ type Props = {
 };
 
 // eslint-disable-next-line no-unused-vars
-const PagesContainer = ({ onNextMembers, onBackMembers, offset }: Props) => (
+const TopPagesContainer = ({ onNextMembers, onBackMembers, offset }: Props) => (
   <Box display="flex" flexDirection="row" justifyContent="space-between">
     {offset >= 25 && <BackButton onClick={onBackMembers} />}
     <Box></Box>
@@ -18,4 +18,4 @@ const PagesContainer = ({ onNextMembers, onBackMembers, offset }: Props) => (
   </Box>
 );
 
-export default PagesContainer;
+export default TopPagesContainer;
