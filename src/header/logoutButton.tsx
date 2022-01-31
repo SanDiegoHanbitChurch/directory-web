@@ -27,7 +27,7 @@ const LogoutButton = ({ logout }: Props) => {
   return (
     <Box m={1}>
       <IconButton onClick={handleOnOpen}>
-        <ExitToAppIcon fontSize="large" />
+        <ExitToAppIcon className="ExitIcon" fontSize="large" />
       </IconButton>
       <Dialog open={openState} onClose={handleOnClose}>
         <DialogTitle>Are you sure you want to log out?</DialogTitle>

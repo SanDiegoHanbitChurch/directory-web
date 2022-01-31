@@ -31,8 +31,8 @@ export default function ScrollToTop() {
     <div className="scroll-to-top">
       {isVisible && (
         <div onClick={scrollToTop}>
-          <IconButton color="primary">
-            <ArrowUpwardIcon />
+          <IconButton>
+            <ArrowUpwardIcon className="Scroll" />
           </IconButton>
         </div>
       )}

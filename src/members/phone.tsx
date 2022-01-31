@@ -9,7 +9,7 @@ type Props = {
 const Phone = ({ phone, onClick }: Props) => (
   <Link onClick={onClick}>
     <Box display="flex" justifyContent="center" p={1}>
-      <Typography variant="body1" color="textSecondary" component="span">
+      <Typography variant="body1" className="CardText" component="span">
         {phone}
       </Typography>
     </Box>
