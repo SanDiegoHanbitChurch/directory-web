@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { CookiesProvider, useCookies } from "react-cookie";
 import * as authActions from "./auth";
 import Authenticated from "./authenticated";
 import Unauthenticated from "./unauthenticated";
 import ScrollToTop from "./scrollToTop";
+import { keepTheme } from "./themes";
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
@@ -24,6 +25,10 @@ function App() {
 
   const { auth = {} } = cookies;
   const { authenticated, user } = auth;
+
+  useEffect(() => {
+    keepTheme();
+  });
 
   if (authenticated) {
     return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 
 export default function ScrollToTop() {
@@ -31,9 +31,9 @@ export default function ScrollToTop() {
     <div className="scroll-to-top">
       {isVisible && (
         <div onClick={scrollToTop}>
-          <Button color="primary">
+          <IconButton color="primary">
             <ArrowUpwardIcon />
-          </Button>
+          </IconButton>
         </div>
       )}
     </div>
