@@ -22,7 +22,8 @@ img {
   width: 300px;
 }
 
-body {
+html,
+#root {
   background-color: var(--light-background);
 }
 
