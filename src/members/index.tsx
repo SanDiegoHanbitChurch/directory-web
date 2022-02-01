@@ -69,20 +69,18 @@ const MembersContainer = ({ user }: Props) => {
       </Box>
     );
   }
+
   return (
     <>
       <SearchBar onSearch={handleOnSearch} onClear={handleOnClear} />
-      <PagesContainer
-        onBackMembers={handleOnBackMembers}
-        offset={offsetState}
-        onNextMembers={handleOnNextMembers}
-      />
       <Members members={membersState} />
-      <PagesContainer
-        onBackMembers={handleOnBackMembers}
-        offset={offsetState}
-        onNextMembers={handleOnNextMembers}
-      />
+      {membersState.length === 0 || membersState === undefined || (
+        <PagesContainer
+          onBackMembers={handleOnBackMembers}
+          offset={offsetState}
+          onNextMembers={handleOnNextMembers}
+        />
+      )}
     </>
   );
 };

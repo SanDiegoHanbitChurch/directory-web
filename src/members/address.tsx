@@ -21,10 +21,10 @@ const Address = ({ address, onClick }: Props) => {
   return (
     <Link onClick={onClick} component="button">
       <Box p={2} display="flex" flexDirection="column">
-        <Typography variant="body1" color="textSecondary" component="span">
+        <Typography variant="body1" className="CardText" component="span">
           {street}
         </Typography>
-        <Typography variant="body1" color="textSecondary" component="span">
+        <Typography variant="body1" className="CardText" component="span">
           {city}, {state} {zip}
         </Typography>
       </Box>

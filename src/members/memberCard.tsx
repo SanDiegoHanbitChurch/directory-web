@@ -48,7 +48,7 @@ const MemberCard = ({
         image={avatar}
         title="Member Avatar"
       />
-      <CardContent>
+      <CardContent className="CardContent">
         <Name name={name} />
         <Phone phone={phone} onClick={onCallNumber} />
         <Address address={address} onClick={onOpenMap} />

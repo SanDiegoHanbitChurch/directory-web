@@ -1,11 +1,29 @@
+.theme-dark {
+  --dark-text: #292929;
+  --light-text: #f9f8f8;
+  --dark-background: #2f4550;
+  --light-background: #586f7c;
+  --accent: #1b1b1c;
+  --button-border: #b8dbd9;
+  --button-color: #d8e2f2;
+}
+
+.theme-light {
+  --dark-text: #5e4b56;
+  --light-text: #1b1b1c;
+  --dark-background: #dbe7e4;
+  --light-background: #eddcd2;
+  --accent: #ebf2f2;
+  --button-border: #5e4b56;
+  --button-color: #353638;
+}
+
 img {
   width: 300px;
 }
 
 body {
-  background-image: url("https://i.ytimg.com/vi/nasgyeou9eg/maxresdefault.jpg");
-  background-size: 100%;
-  background-attachment: fixed;
+  background-color: var(--light-background);
 }
 
 .scroll-to-top {
@@ -14,4 +32,20 @@ body {
   right: 0.5rem;
   animation: fadeIn 700ms ease-in-out 1s both;
   cursor: pointer;
+}
+
+.CardContent {
+  background-color: var(--accent);
+}
+
+.IconButton {
+  color: var(--button-color);
+}
+
+.Scroll {
+  color: var(--button-color);
+}
+
+.CardText {
+  color: var(--light-text);
 }
