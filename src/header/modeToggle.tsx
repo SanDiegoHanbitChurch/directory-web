@@ -27,7 +27,7 @@ function ModeToggle() {
 
   return (
     <div className="container--toggle">
-      <Box m={1} marginRight={12}>
+      <Box m={1} marginTop={2} marginRight={6}>
         <DarkModeToggle onChange={handleOnClick} checked={togClass} size={80} />
       </Box>
     </div>

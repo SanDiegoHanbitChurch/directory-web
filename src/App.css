@@ -38,7 +38,7 @@ body {
   background-color: var(--accent);
 }
 
-.ExitIcon {
+.IconButton {
   color: var(--button-color);
 }
 
