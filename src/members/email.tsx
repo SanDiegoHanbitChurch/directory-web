@@ -7,13 +7,13 @@ type Props = {
 };
 
 const Email = ({ email, onClick }: Props) => (
-  <Link onClick={onClick}>
-    <Box display="flex" justifyContent="center" p={1}>
-      <Typography variant="body1" className="CardText" component="span">
+  <Box display="flex" justifyContent="center" p={1}>
+    <Link onClick={onClick} color="secondary" component="button">
+      <Typography variant="body1" className="Text" component="span">
         {email}
       </Typography>
-    </Box>
-  </Link>
+    </Link>
+  </Box>
 );
 
 export default Email;

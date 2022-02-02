@@ -7,7 +7,7 @@ type Props = {
   onClick: () => void;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     "& > *": {
       margin: 0,
@@ -17,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
       left: 20,
       position: "fixed",
     },
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1),
   },
 }));
 
@@ -31,7 +28,6 @@ const BackButton = ({ onClick }: Props) => {
         onClick={onClick}
         color="secondary"
         aria-label="add"
-        className="UploadButton"
         size="large"
         variant="extended"
       >

@@ -6,6 +6,7 @@
   --accent: #1b1b1c;
   --button-border: #b8dbd9;
   --button-color: #d8e2f2;
+  --dialog-color: #383838;
 }
 
 .theme-light {
@@ -16,6 +17,7 @@
   --accent: #ebf2f2;
   --button-border: #5e4b56;
   --button-color: #353638;
+  --dialog-color: white;
 }
 
 img {
@@ -47,6 +49,18 @@ html,
   color: var(--button-color);
 }
 
-.CardText {
+.Text {
   color: var(--light-text);
+}
+
+.Username {
+  color: var(--light-text);
+}
+
+.LogoutDialog {
+  background-color: var(--dialog-color);
+}
+
+.PageButton {
+  color: violet;
 }

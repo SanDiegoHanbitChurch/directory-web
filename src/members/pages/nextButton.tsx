@@ -7,7 +7,7 @@ type Props = {
   onClick: () => void;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     "& > *": {
       margin: 0,
@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
       position: "fixed",
     },
   },
-  extendedIcon: {
-    marginRight: theme.spacing(1),
-  },
 }));
 
 const NextButton = ({ onClick }: Props) => {
@@ -29,10 +26,9 @@ const NextButton = ({ onClick }: Props) => {
     <div className={classes.root}>
       <Fab
         onClick={onClick}
-        color="secondary"
         aria-label="add"
-        className="UploadButton"
         size="large"
+        color="secondary"
         variant="extended"
       >
         <NavigateNextIcon fontSize="large" />

@@ -16,7 +16,9 @@ const UserAvatar = ({ user }: Props) => (
       <Avatar src={user.photoURL} alt="UserAvatar" />
     </Box>
     <Box m={2}>
-      <Typography component="span">{user.displayName}</Typography>
+      <Typography className="Username" component="span">
+        {user.displayName}
+      </Typography>
     </Box>
   </Box>
 );

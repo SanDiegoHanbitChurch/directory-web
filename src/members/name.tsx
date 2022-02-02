@@ -7,7 +7,7 @@ type Props = {
 
 const Name = ({ name }: Props) => (
   <Box display="flex" justifyContent="center" p={1}>
-    <Typography gutterBottom component="h2" className="CardText">
+    <Typography gutterBottom component="h2" className="Text">
       {name}
     </Typography>
   </Box>

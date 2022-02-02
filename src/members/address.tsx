@@ -19,16 +19,20 @@ const Address = ({ address, onClick }: Props) => {
   const { street, city, state, zip } = address;
 
   return (
-    <Link onClick={onClick} component="button">
-      <Box p={2} display="flex" flexDirection="column">
-        <Typography variant="body1" className="CardText" component="span">
-          {street}
-        </Typography>
-        <Typography variant="body1" className="CardText" component="span">
-          {city}, {state} {zip}
-        </Typography>
-      </Box>
-    </Link>
+    <Box p={2} display="flex" flexDirection="column">
+      <Link onClick={onClick} color="secondary" component="button">
+        <div>
+          <Typography variant="body1" className="Text" component="span">
+            {street}
+          </Typography>
+        </div>
+        <div>
+          <Typography variant="body1" className="Text" component="span">
+            {city}, {state} {zip}
+          </Typography>
+        </div>
+      </Link>
+    </Box>
   );
 };
 
