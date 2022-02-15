@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CookiesProvider, useCookies } from "react-cookie";
+import MemberDetailsContainer from "./members/memberDetails";
 import * as authActions from "./auth";
 import Authenticated from "./authenticated";
 import Unauthenticated from "./unauthenticated";
-import ScrollToTop from "./scrollToTop";
 import { keepTheme } from "./themes";
 
 function App() {
@@ -33,10 +34,18 @@ function App() {
   if (authenticated) {
     return (
       <CookiesProvider>
-        <div>
-          <Authenticated user={user} logout={logout} />
-          <ScrollToTop />
-        </div>
+        <Router>
+          <Routes>
+            <Route
+              path="/"
+              element={<Authenticated user={user} logout={logout} />}
+            />
+            <Route
+              path="/details"
+              element={<MemberDetailsContainer user={user} />}
+            />
+          </Routes>
+        </Router>
       </CookiesProvider>
     );
   }

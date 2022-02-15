@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,6 +14,7 @@ type Props = {
   avatar: string;
   phone: string;
   email: string;
+  id: string;
   address: {
     street: string;
     city: string;
@@ -36,18 +38,22 @@ const MemberCard = ({
   email,
   avatar,
   address,
+  id,
   onOpenMap,
   onSendEmail,
   onCallNumber,
 }: Props) => {
   const classes = useStyles();
+
   return (
     <Card>
-      <CardMedia
-        className={classes.media}
-        image={avatar}
-        title="Member Avatar"
-      />
+      <Link to="/details" state={{ id, name, phone, email }}>
+        <CardMedia
+          className={classes.media}
+          image={avatar}
+          title="Member Avatar"
+        />
+      </Link>
       <CardContent className="CardContent">
         <Name name={name} />
         <Phone phone={phone} onClick={onCallNumber} />

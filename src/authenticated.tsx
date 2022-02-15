@@ -3,6 +3,7 @@ import { Box } from "@material-ui/core";
 import MembersContainer from "./members";
 import HanbitLogo from "./assets/hanbitLogo.svg";
 import HeaderContainer from "./header";
+import ScrollToTop from "./scrollToTop";
 
 type Props = {
   logout: () => void;
@@ -21,6 +22,7 @@ const Authenticated = ({ logout, user }: Props) => (
       <img src={HanbitLogo} alt="HanbitLogo" />
     </Box>
     <MembersContainer user={user} />
+    <ScrollToTop />
   </div>
 );
 

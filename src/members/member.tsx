@@ -8,6 +8,7 @@ type Props = {
     avatar: string;
     phone: string;
     email: string;
+    id: string;
     address: {
       street: string;
       city: string;
@@ -18,7 +19,7 @@ type Props = {
 };
 
 const Member = ({ member }: Props) => {
-  const { name, avatar, phone, email, address } = member;
+  const { name, avatar, phone, email, address, id } = member;
 
   const handleOnOpenMap = () => {
     const destination = encodeURIComponent(
@@ -44,6 +45,7 @@ const Member = ({ member }: Props) => {
         phone={phone}
         email={email}
         address={address}
+        id={id}
         onOpenMap={handleOnOpenMap}
         onSendEmail={handleOnSendEmail}
         onCallNumber={handleOnCallNumber}

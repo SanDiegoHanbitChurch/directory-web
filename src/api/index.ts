@@ -28,4 +28,9 @@ const getMembers = async (
   offset: number = 0
 ): Promise<MemberType[]> => callEndpoint(user, `${BASEURL}?offset=${offset}`);
 
-export { getMembers, searchMembers };
+const getMemberDetails = async (
+  user: User,
+  id: string
+): Promise<MemberType[]> => callEndpoint(user, `${BASEURL}:${id}`);
+
+export { getMembers, searchMembers, getMemberDetails };

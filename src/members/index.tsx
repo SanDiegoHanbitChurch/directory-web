@@ -74,7 +74,7 @@ const MembersContainer = ({ user }: Props) => {
     <>
       <SearchBar onSearch={handleOnSearch} onClear={handleOnClear} />
       <Members members={membersState} />
-      {membersState.length === 0 || membersState === undefined || (
+      {membersState.length < 25 || membersState === undefined || (
         <PagesContainer
           onBackMembers={handleOnBackMembers}
           offset={offsetState}
